@@ -12139,11 +12139,12 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>回答:</strong></p>
+<p><strong>回答:</strong><br>
+由于数据中每个特征的最小值与最大值相差很大，所以用中位数代替均值作为分析依据</p>
 <ul>
-<li>样本中的第一家企业更像是果蔬便利店，新鲜水果的订单量高出了平均值接近一个标准差，熟食的订单高出了平均值接近两个标准差，其他的订单相对均值相差无几，所以很容易就能想到是一家最近很火爆的果蔬便利店，既卖水果，又卖熟食和食品杂货等。  </li>
-<li>样本中的第二家企业更像咖啡店，牛奶、食品杂货、洗涤剂的订单量高出了平均值接近一个标准差，很容易让人联想到咖啡店。  </li>
-<li>样本中的第三家企业更像是大型连锁超市，因为除了冷冻食品和洗涤剂以外，其他每一项的订单都很多很多。</li>
+<li>样本中的第一家企业更像是果蔬便利店，新鲜水果、冷冻食品、熟食的订单量均大于Q3四分位数，牛奶、零食杂货、洗涤剂的订单大于Q2四分位数，，所以很容易就能想到是一家综合性的超市或者便利店。  </li>
+<li>样本中的第二家企业更像咖啡店，牛奶、零食杂货、洗涤剂、熟食的订单量均大于Q3四分位数，很容易让人联想到咖啡店或饮品店。  </li>
+<li>样本中的第三家企业更像是大型连锁超市，所有货品的订单量均大于Q3四分位数很多。</li>
 </ul>
 
 </div>
@@ -12231,9 +12232,11 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>回答:</strong><br>
-我尝试预测的是'Grocery'食品杂货特征，$R^2$的结果是0.808，还是比较理想的，由此可见，可以根据其他货品的订单量简单预测一下食品杂货的订单量，并作为参考值提供给供货商，在需要的时候可以用作一种辅助的销售手段。<br>
-至于这个特征对于区分用户的消费习惯来说，是没有必要的，因为$R^2$的结果是0.808，而且是在未进行优化过的基础决策树模型上做的预测评分，由此可见，食品杂货的订单量与其他货品的订单量有着一定的联系，所以用它来区分用户消费习惯是没有很大作用的。</p>
+<p><strong>回答:</strong></p>
+<ul>
+<li>我尝试预测的是'Grocery'食品杂货特征，$R^2$的结果是0.808，还是比较理想的，由此可见，可以根据其他货品的订单量简单预测一下食品杂货的订单量，并作为参考值提供给供货商，在需要的时候可以用作一种辅助的销售手段。  </li>
+<li>至于这个特征对于区分用户的消费习惯来说，是没有必要的，因为$R^2$的结果是0.808，而且是在未进行优化过的基础决策树模型上做的预测评分，由此可见，食品杂货的订单量与其他货品的订单量有着一定的联系，所以用它来区分用户消费习惯是没有很大作用的。</li>
+</ul>
 
 </div>
 </div>
@@ -14066,9 +14069,13 @@ DMMwDMMwjCny/wF2eAYjCf/r7QAAAABJRU5ErkJggg==
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>回答:</strong><br>
-牛奶和食品杂货，牛奶和洗涤剂，食品杂货和洗涤剂，他们之前存在一定程度相关性。<br>
-这些特征的数据比较像线性分布。</p>
+<p><strong>回答:</strong></p>
+<ul>
+<li>观察行特征和列特征的散点图，可以看到有些散点图的分布更有规律，类似于线性分布。</li>
+<li>通过观察可以发现，第二行第三列【牛奶和食品杂货】、第二行第五列【牛奶和洗涤剂】、第三行第五列【食品杂货和洗涤剂】，他们之前存在一定程度相关性。  </li>
+<li>这个结果验证了我尝试预测的食品杂货的相关性。</li>
+<li>这些特征的数据，通过肉眼观察，可以发现X与Y轴有很好的线性关系。</li>
+</ul>
 
 </div>
 </div>
@@ -19182,8 +19189,12 @@ MBgMBsOmwDg/BoPBYDAYDAaDYVNgnB+DwWAwGAwGg8GwKfi/tBsM3KOlZsQAAAAASUVORK5CYII=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>回答:</strong><br>
-已列出多于一个特征下被看作是异常的数据点，如上最后一个表格，这些点应该被从数据中移除，因为他们的订货量没有代表性，某一项订单很低，某一项订单很高，这样的数据会影响模型拟合，所以当做噪声来移除掉。</p>
+<p><strong>回答:</strong></p>
+<ul>
+<li>已列出多于一个特征下被看作是异常的数据点，如上最后一个表格，</li>
+<li>这些点应该被从数据中移除，因为他们的订货量没有代表性，某一项订单很低，某一项订单很高，这样的数据会影响模型拟合，所以当做噪声来移除掉。</li>
+<li>而只有一个特征在IQR之外的数据其实有很多，考虑到样本只有440个，删除这些数据会导致样本量更小，影响模型的拟合能力，故这些数据不会被移除。</li>
+</ul>
 
 </div>
 </div>
@@ -19836,7 +19847,7 @@ NKsAAAAASUVORK5CYII=
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0xa23d358&gt;</pre>
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0xa994dd8&gt;</pre>
 </div>
 
 </div>
@@ -21853,7 +21864,7 @@ QAgAAABAy/n/c5d77JMqv5YAAAAASUVORK5CYII=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 显示预测结果</span>
@@ -21889,8 +21900,12 @@ Sample point 2 predicted to be in Cluster 1
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>回答:</strong><br>
-根据之前的猜想，样本0和2应属于1类，样本1应属于2类。然而根据模型得出的结论，对于样本0和2的预测较为符合，而样本1的预测略有偏差。</p>
+<p><strong>回答:</strong></p>
+<ul>
+<li>通过对比样本数据和簇中心的情况，样本0和2在新鲜水果和冷冻食品的进货量上与1类的簇中心很像，所以应属于1类，</li>
+<li>样本1在牛奶、零食杂货、洗涤用品这三项更与2类的特征表现更接近，应属于2类。</li>
+<li>根据聚类算法得出的结论，三个样本均属于1类，样本0和2的预测较为符合，而对于样本1的预测有偏差。</li>
+</ul>
 
 </div>
 </div>
@@ -21921,8 +21936,11 @@ Sample point 2 predicted to be in Cluster 1
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>回答：</strong><br>
-通过K-Means聚类分类，可以得知客户有两大类，第一大类是以果蔬和冷冻食品为主进货量的便利店，第二大类是以牛奶、零食杂货、洗涤剂为主进货量的咖啡饮品店，我们可以看到在这两大类客户中，都是快消类商品的客户，而且无论是果蔬还是牛奶，都对食品新鲜度有很高的要求，所以综合来看，不建议批发商将派送服务从每周5天变为每周3天！！！</p>
+<p><strong>回答：</strong></p>
+<ul>
+<li>通过K-Means聚类分类，可以得知客户有两大类，第一大类是以果蔬和冷冻食品为主进货量的便利店，第二大类是以牛奶、零食杂货、洗涤剂为主进货量的咖啡饮品店，</li>
+<li>对这两类客户群体分别进行A/B测试，在1类客户与2类客户中分别随机选择1/5的客户将派送服务变为每周3天，连续四周，持续跟进客户的反馈效果，统计并对比订单情况是否较同年上期有明显变化，如果该类客户反馈良好，则将该类客户的派送服务均改为每周3天，如果该类客户反应很差，建议批发商将这1/5的客户再改回原有的每周5天配送。</li>
+</ul>
 
 </div>
 </div>
@@ -21940,7 +21958,7 @@ Sample point 2 predicted to be in Cluster 1
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="k">import</span> <span class="n">RandomForestClassifier</span>
@@ -22016,7 +22034,7 @@ Sample point 2 predicted to be in Cluster 1
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 根据‘Channel‘数据显示聚类的结果</span>
@@ -22687,9 +22705,10 @@ iIiIiEjZ+f94lEJcK14qMwAAAABJRU5ErkJggg==
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>回答：</strong></p>
 <ul>
-<li>已经足够好了！</li>
+<li>K-Means聚类算法的表现较为良好。</li>
 <li>也许DBSCAN会更好！</li>
-<li>基本一致！</li>
+<li>通过可视化图观察并对比发现，K-Means聚类算法对于大多数的点实现了正确的分类，但是有一小部分特殊的点没有分类正确。</li>
+<li>特殊点包括：有一些 'HoReCa'的点围绕在'Retail'的簇中心，和数量更少的'Retail'点散落在'HoReCa'的簇中心，这些点很难被正确分类。</li>
 </ul>
 
 </div>
